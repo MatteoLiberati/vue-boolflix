@@ -2,7 +2,7 @@
   <header class="container">
     <slot></slot>
     <div class="input">
-      <input v-model.trim="userSearch" type="text" />
+      <input @keyup.enter="search" v-model.trim="userSearch" type="text" />
       <button @click="search">Cerca</button>
     </div>
   </header>

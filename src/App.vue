@@ -5,11 +5,10 @@
       <!-- SLOT -->
       <img src="@/assets/img/logoBoolflix.png" alt="" />
     </Header>
+    <!-- START BEFORE SEARCH -->
+    <Start v-if="start" />
     <!-- MAIN -->
-    <!-- <div v-for="element in movieList" :key="element.title">
-      {{ element.title }}
-    </div> -->
-    <Main />
+    <Main v-else :movie="movieList" :tv="tvList" />
   </div>
 </template>
 
@@ -17,6 +16,7 @@
 // IMPORT
 import Header from "@/components/Header";
 import Main from "@/components/Main";
+import Start from "@/components/Start";
 import axios from "axios";
 
 export default {
@@ -24,12 +24,14 @@ export default {
   components: {
     Header,
     Main,
+    Start,
   },
   data() {
     return {
       search: "",
       movieList: [],
       tvList: [],
+      start: true,
     };
   },
   computed: {
@@ -41,6 +43,7 @@ export default {
         )
         .then((res) => {
           this.movieList = res.data.results;
+          this.start = false;
           return console.log(this.movieList);
         })
         .catch((err) => {
@@ -55,6 +58,7 @@ export default {
         )
         .then((res) => {
           this.tvList = res.data.results;
+          this.start = false;
           return console.log(this.tvList);
         })
         .catch((err) => {

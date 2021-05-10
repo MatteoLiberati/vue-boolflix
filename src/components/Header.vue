@@ -2,8 +2,8 @@
   <header class="container">
     <slot></slot>
     <div class="input">
-      <input v-model="userSearch" type="text" />
-      <button @click="$emit('search', userSearch)">Cerca</button>
+      <input v-model.trim="userSearch" type="text" />
+      <button @click="search">Cerca</button>
     </div>
   </header>
 </template>
@@ -15,6 +15,12 @@ export default {
     return {
       userSearch: "",
     };
+  },
+  methods: {
+    search() {
+      this.$emit("search", this.userSearch);
+      this.userSearch = "";
+    },
   },
 };
 </script>

@@ -1,24 +1,72 @@
 <template>
   <div id="app">
-    <Header @search="UserInput">
+    <!-- HEADER -->
+    <Header @search="userInput">
       <!-- SLOT -->
       <img src="@/assets/img/logoBoolflix.png" alt="" />
     </Header>
+    <!-- MAIN -->
+    <!-- <div v-for="element in movieList" :key="element.title">
+      {{ element.title }}
+    </div> -->
+    <Main />
   </div>
 </template>
 
 <script>
 // IMPORT
 import Header from "@/components/Header";
+import Main from "@/components/Main";
+import axios from "axios";
 
 export default {
   name: "App",
   components: {
     Header,
+    Main,
+  },
+  data() {
+    return {
+      search: "",
+      movieList: [],
+      tvList: [],
+    };
+  },
+  computed: {
+    getListMovie() {
+      // MOVIELIST
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?api_key=08725e8c8f7229c5f54f717ccd2e6afb&query=${this.search}`
+        )
+        .then((res) => {
+          this.movieList = res.data.results;
+          return console.log(this.movieList);
+        })
+        .catch((err) => {
+          return console.log(err);
+        });
+    },
+    getListtv() {
+      // TVLIST
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/tv?api_key=08725e8c8f7229c5f54f717ccd2e6afb&query=${this.search}`
+        )
+        .then((res) => {
+          this.tvList = res.data.results;
+          return console.log(this.tvList);
+        })
+        .catch((err) => {
+          return console.log(err);
+        });
+    },
   },
   methods: {
-    UserInput(userSearch) {
-      console.log(userSearch);
+    userInput(userSearch) {
+      this.search = userSearch;
+      this.getListMovie;
+      this.getListtv;
     },
   },
 };

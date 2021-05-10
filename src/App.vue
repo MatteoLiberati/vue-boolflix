@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Header>
+    <Header @search="UserInput">
+      <!-- SLOT -->
       <img src="@/assets/img/logoBoolflix.png" alt="" />
     </Header>
   </div>
@@ -15,7 +16,14 @@ export default {
   components: {
     Header,
   },
+  methods: {
+    UserInput(userSearch) {
+      console.log(userSearch);
+    },
+  },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "@/styles/general.scss";
+</style>

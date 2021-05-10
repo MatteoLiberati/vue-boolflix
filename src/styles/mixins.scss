@@ -1,0 +1,22 @@
+// MIXINS
+@mixin flex($var){
+    display:flex;
+    @if $var == "horizontal"{
+        justify-content: center;
+    }
+    @else if $var == "vertical"{
+        align-items: center;
+    }
+    @else if $var == "center"{
+        justify-content: center;
+        align-items: center;
+    }
+    @else if $var == "column" {
+        flex-direction: column;
+    }@else if $var == "flex"{
+        display: flex;
+    }@else if $var == "space-bet-v"{
+        justify-content:space-between;
+        align-items: center;
+    }
+}

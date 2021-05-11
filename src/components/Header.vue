@@ -1,8 +1,13 @@
 <template>
-  <header class="container">
+  <header class="container my-20">
     <slot></slot>
     <div class="input">
-      <input @keyup.enter="search" v-model.trim="userSearch" type="text" />
+      <input
+        class="mr-8"
+        @keyup.enter="search"
+        v-model.trim="userSearch"
+        type="text"
+      />
       <button @click="search">Cerca</button>
     </div>
   </header>
@@ -28,8 +33,42 @@ export default {
 <style scoped lang="scss">
 // IMPORT
 @import "@/styles/mixins";
+@import "@/styles/vars";
+
 // STYLE
 header {
+  width: 100%;
   @include flex("space-bet-v");
+  input {
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    appearance: none;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+    font-size: 1.1rem;
+    background-color: $text-color;
+    color: $background-color;
+    &:focus {
+      box-shadow: 0px 0px 2px 2px $primary-color;
+    }
+  }
+  button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: $primary-color;
+    border: none;
+    color: $text-color;
+    font-size: 1.1rem;
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    transition: background-color 0.3s;
+    &:focus,
+    &:hover {
+      background-color: rgba($primary-color, 0.8);
+    }
+  }
 }
 </style>

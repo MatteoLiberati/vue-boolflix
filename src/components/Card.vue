@@ -22,7 +22,6 @@
       />
       <span v-else>{{ item.original_language }}</span>
       <!-- VOTE -->
-      <div>{{ ceil(item.vote_average) }}</div>
       <!-- FULL STARS -->
       <i
         class="fas fa-star"

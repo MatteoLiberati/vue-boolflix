@@ -1,18 +1,62 @@
 // IMPORT
 @import "vars";
 @import "mixins";
+@import "~@fontsource/lato/index.css";
+@import "~@fontsource/lato/700.css";
 
 //GENERAL
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: lato;
+}
+
+body {
   background-color: $background-color;
   color: $text-color;
 }
 
 // UTILITIES
 .container {
-  max-width: 1170px;
+  max-width: 1270px;
   margin: 0 auto;
+}
+
+.mt-20{
+  margin-top:20px;
+}
+
+.mb-20{
+  margin-bottom:20px;
+}
+
+.my-20{
+  margin-bottom:20px;
+  margin-top:20px;
+}
+
+.mt-10{
+  margin-top:10px;
+}
+
+.mb-10{
+  margin-bottom:10px;
+}
+
+.mr-8{
+  margin-right:8px
+}
+
+.ml-8{
+  margin-left:8px
+}
+
+
+
+
+// APP
+#app {
+  height: 100vh;
+  @include flex(column);
 }

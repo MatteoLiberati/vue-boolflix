@@ -3,7 +3,7 @@
     <!-- HEADER -->
     <Header @search="userInput">
       <!-- SLOT -->
-      <img src="@/assets/img/logoBoolflix.png" alt="" />
+      <a href="#"><img src="@/assets/img/logoBoolflix.png" alt="logo"/></a>
     </Header>
     <!-- START BEFORE SEARCH -->
     <Start v-if="start" />

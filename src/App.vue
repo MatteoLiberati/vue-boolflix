@@ -3,7 +3,9 @@
     <!-- HEADER -->
     <Header @search="userInput">
       <!-- SLOT -->
-      <a href="#"><img src="@/assets/img/logoBoolflix.png" alt="logo"/></a>
+      <a href="#"
+        ><img @click="home" src="@/assets/img/logoBoolflix.png" alt="logo"
+      /></a>
     </Header>
     <!-- START BEFORE SEARCH -->
     <Start v-if="start" />
@@ -71,6 +73,9 @@ export default {
       this.search = userSearch;
       this.getListMovie;
       this.getListtv;
+    },
+    home() {
+      this.start = true;
     },
   },
 };

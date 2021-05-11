@@ -1,39 +1,53 @@
 <template>
-  <div class="card">
+  <div @mouseenter="content" @mouseleave="content" class="card">
     <div class="cover">
       <img
-        :src="`https://image.tmdb.org/t/p/w342/${item.backdrop_path}`"
+        :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`"
         :alt="item.title + item.name"
       />
     </div>
     <!-- CONTENT CARD -->
-    <div class="content-card">
-      <h3>{{ item.title }}{{ item.name }}</h3>
-      <h3>{{ item.original_title }} {{ item.original_name }}</h3>
-      <img
-        v-if="item.original_language == 'it'"
-        src="../assets/img/it.png"
-        alt="Italy"
-      />
-      <img
-        v-if="item.original_language == 'en'"
-        src="../assets/img/en.png"
-        alt="English"
-      />
-      <span v-else>{{ item.original_language }}</span>
+    <div v-show="showContent" class="content-card">
+      <h2 class="mb-10 text-center">{{ item.title }}{{ item.name }}</h2>
+      <!-- ORIGINAL TITLE -->
+      <div class="original-title mb-20">
+        <span class="mr-8">Original title:</span>
+        <span> {{ item.original_title }} {{ item.original_name }} </span>
+      </div>
+      <!-- LANGUAGE -->
+      <div class="language mb-10">
+        <span class="mr-8">Original language:</span>
+        <img
+          v-if="item.original_language == 'it'"
+          src="../assets/img/it.png"
+          alt="Italy"
+        />
+        <img
+          v-if="item.original_language == 'en'"
+          src="../assets/img/en.png"
+          alt="English"
+        />
+        <span v-else>{{ item.original_language }}</span>
+      </div>
       <!-- VOTE -->
-      <!-- FULL STARS -->
-      <i
-        class="fas fa-star"
-        v-for="(element, index) in ceil(item.vote_average)"
-        :key="index + element"
-      ></i>
-      <!-- EMPTY STARS -->
-      <i
-        class="far fa-star"
-        v-for="(element, index) in 5 - ceil(item.vote_average)"
-        :key="'key' + index + element"
-      ></i>
+      <div class="vote">
+        <!-- FULL STARS -->
+        <i
+          class="fas fa-star"
+          v-for="(element, index) in ceil(item.vote_average)"
+          :key="index + element"
+        ></i>
+        <!-- EMPTY STARS -->
+        <i
+          class="far fa-star"
+          v-for="(element, index) in 5 - ceil(item.vote_average)"
+          :key="'key' + index + element"
+        ></i>
+      </div>
+      <div class="plot">
+        <span class="mb-10">plot:</span>
+        <span>{{ item.overview }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -42,14 +56,67 @@
 export default {
   name: "Card",
   props: ["item"],
+  data() {
+    return {
+      showContent: false,
+    };
+  },
   methods: {
     ceil(number) {
       console.log(number);
       number = number / 2;
       return Math.ceil(number);
     },
+    content() {
+      this.showContent = !this.showContent;
+    },
   },
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+// IMPORT
+@import "@/styles/vars";
+@import "@/styles/mixins";
+// STYLE
+.card {
+  position: relative;
+  .cover {
+    img {
+      height: 400px;
+      width: 350px;
+      object-fit: cover;
+      border: 1px solid rgba($secondary-color, 0.5);
+      cursor: pointer;
+    }
+  }
+  .content-card {
+    position: absolute;
+    padding: 20px;
+    overflow-y: auto;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($secondary-color, 0.5);
+    @include flex(column);
+    cursor: pointer;
+    // LANGUAGE
+    .language {
+      @include flex(vertical);
+      & > img {
+        height: 1rem;
+      }
+      // VOTE
+    }
+    .vote {
+      text-align: right;
+      color: yellow;
+    }
+    // PLOT
+    .plot {
+      @include flex(column);
+    }
+  }
+}
+</style>

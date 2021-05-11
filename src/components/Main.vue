@@ -1,23 +1,26 @@
 <template>
   <main class="container">
     <!-- MOVIES -->
-    <h2>Movies</h2>
-    <section class="movies">
-      <Card
-        :item="element"
-        v-for="(element, index) in movie"
-        :key="index + element"
-      />
+    <section v-if="movie.length != 0" class="container-movies">
+      <h2>Movies</h2>
+      <div class="movies">
+        <Card
+          :item="element"
+          v-for="(element, index) in movie"
+          :key="index + element"
+        />
+      </div>
     </section>
-    <hr />
     <!-- TV -->
-    <h2>Series</h2>
-    <section class="tv-series">
-      <Card
-        :item="element"
-        v-for="(element, index) in tv"
-        :key="index + element"
-      />
+    <section v-if="tv.length != 0" class="container-series">
+      <h2>Series</h2>
+      <div class="tv-series">
+        <Card
+          :item="element"
+          v-for="(element, index) in tv"
+          :key="index + element"
+        />
+      </div>
     </section>
   </main>
 </template>
@@ -36,14 +39,18 @@ export default {
 
 <style scoped lang="scss">
 // IMPORT
+@import "@/styles/vars.scss";
 @import "@/styles/mixins.scss";
 // STYLE
 main {
   h2 {
     margin: 20px 0;
     text-align: center;
+    text-transform: uppercase;
+    color: $primary-color;
   }
-  section {
+  .movies,
+  .tv-series {
     margin: 50px 0;
     @include flex(vertical);
     overflow-x: auto;

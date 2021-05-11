@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     ceil(number) {
-      console.log(number);
       number = number / 2;
       return Math.ceil(number);
     },

@@ -46,10 +46,9 @@ export default {
         .then((res) => {
           this.movieList = res.data.results;
           this.start = false;
-          return console.log(this.movieList);
         })
         .catch((err) => {
-          return console.log(err);
+          console.log(err);
         });
     },
     getListtv() {
@@ -61,10 +60,9 @@ export default {
         .then((res) => {
           this.tvList = res.data.results;
           this.start = false;
-          return console.log(this.tvList);
         })
         .catch((err) => {
-          return console.log(err);
+          console.log(err);
         });
     },
   },

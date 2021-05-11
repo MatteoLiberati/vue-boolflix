@@ -65,7 +65,7 @@ export default {
     },
     poster(link) {
       if (link != null) {
-        return `https://image.tmdb.org/t/p/w500/${link}`;
+        return `https://image.tmdb.org/t/p/w342/${link}`;
       } else {
         return `https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg`;
       }
@@ -86,18 +86,18 @@ export default {
   position: relative;
   .cover {
     img {
-      height: 400px;
-      width: 350px;
+      height: 513px;
+      width: 342px;
       object-fit: cover;
       border: 1px solid rgba($secondary-color, 0.5);
       cursor: pointer;
       @media screen and (max-width: 1270px) {
         height: 300px;
-        width: 250px;
+        width: 200px;
       }
       @media screen and (max-width: 700px) {
-        height: 220px;
-        width: 180px;
+        height: 150px;
+        width: 100px;
       }
     }
   }

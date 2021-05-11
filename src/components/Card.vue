@@ -11,12 +11,12 @@
       <h2 class="mb-10 text-center">{{ item.title }}{{ item.name }}</h2>
       <!-- ORIGINAL TITLE -->
       <div class="original-title mb-20">
-        <span class="mr-8">Original title:</span>
+        <span class="mr-8 primary">Titolo originale:</span>
         <span> {{ item.original_title }} {{ item.original_name }} </span>
       </div>
       <!-- LANGUAGE -->
       <div class="language mb-10">
-        <span class="mr-8">Original language:</span>
+        <span class="mr-8 primary">lingua originale:</span>
         <img
           v-if="item.original_language == 'it'"
           src="../assets/img/it.png"
@@ -45,7 +45,7 @@
         ></i>
       </div>
       <div class="plot">
-        <span class="mb-10">plot:</span>
+        <span class="mb-10 primary">trama:</span>
         <span>{{ item.overview }}</span>
       </div>
     </div>

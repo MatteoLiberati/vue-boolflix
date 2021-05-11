@@ -39,7 +39,7 @@ export default {
       // MOVIELIST
       axios
         .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=08725e8c8f7229c5f54f717ccd2e6afb&query=${this.search}`
+          `https://api.themoviedb.org/3/search/movie?api_key=08725e8c8f7229c5f54f717ccd2e6afb&query=${this.search}&language=it-IT `
         )
         .then((res) => {
           this.movieList = res.data.results;
@@ -54,7 +54,7 @@ export default {
       // TVLIST
       axios
         .get(
-          `https://api.themoviedb.org/3/search/tv?api_key=08725e8c8f7229c5f54f717ccd2e6afb&query=${this.search}`
+          `https://api.themoviedb.org/3/search/tv?api_key=08725e8c8f7229c5f54f717ccd2e6afb&query=${this.search}&language=it-IT `
         )
         .then((res) => {
           this.tvList = res.data.results;

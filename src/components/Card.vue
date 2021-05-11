@@ -88,6 +88,14 @@ export default {
       object-fit: cover;
       border: 1px solid rgba($secondary-color, 0.5);
       cursor: pointer;
+      @media screen and (max-width: 1270px){
+        height: 300px;
+        width: 250px;
+      }
+      @media screen and (max-width: 700px){
+        height: 220px;
+        width: 180px;
+      }
     }
   }
   .content-card {

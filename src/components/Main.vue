@@ -43,17 +43,26 @@ export default {
 @import "@/styles/mixins.scss";
 // STYLE
 main {
-  h2 {
-    margin: 20px 0;
-    text-align: center;
-    text-transform: uppercase;
-    color: $primary-color;
-  }
-  .movies,
-  .tv-series {
-    margin: 50px 0;
-    @include flex(vertical);
-    overflow-x: auto;
+  section{
+    h2{
+      margin: 20px 0;
+      text-align:center;
+      text-transform: uppercase;
+      color: $primary-color;
+    }
+    .movies,
+    .tv-series {
+      margin: 50px 0;
+      @include flex(vertical);
+      overflow-x: auto;
+      @media screen and (max-width: 800px){
+        height: 500px;
+        overflow-y: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
   }
 }
+
 </style>

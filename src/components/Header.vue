@@ -39,6 +39,9 @@ export default {
 header {
   width: 100%;
   @include flex("space-bet-v");
+  @media screen and (max-width: 700px){
+    @include flex(column)
+  }
   input {
     width: 180px;
     height: 30px;

@@ -1,10 +1,7 @@
 <template>
   <div @mouseenter="content" @mouseleave="content" class="card">
     <div class="cover">
-      <img
-        :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`"
-        :alt="item.title + item.name"
-      />
+      <img :src="poster(item.poster_path)" :alt="item.title + item.name" />
     </div>
     <!-- CONTENT CARD -->
     <div v-show="showContent" class="content-card">
@@ -12,7 +9,7 @@
       <!-- ORIGINAL TITLE -->
       <div class="original-title mb-20">
         <span class="mr-8 primary">Titolo originale:</span>
-        <span> {{ item.original_title }} {{ item.original_name }} </span>
+        <span> {{ item.original_title }}{{ item.original_name }} </span>
       </div>
       <!-- LANGUAGE -->
       <div class="language mb-10">
@@ -67,6 +64,13 @@ export default {
       number = number / 2;
       return Math.ceil(number);
     },
+    poster(link) {
+      if (link != null) {
+        return `https://image.tmdb.org/t/p/w500/${link}`;
+      } else {
+        return `https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg`;
+      }
+    },
     content() {
       this.showContent = !this.showContent;
     },
@@ -88,11 +92,11 @@ export default {
       object-fit: cover;
       border: 1px solid rgba($secondary-color, 0.5);
       cursor: pointer;
-      @media screen and (max-width: 1270px){
+      @media screen and (max-width: 1270px) {
         height: 300px;
         width: 250px;
       }
-      @media screen and (max-width: 700px){
+      @media screen and (max-width: 700px) {
         height: 220px;
         width: 180px;
       }

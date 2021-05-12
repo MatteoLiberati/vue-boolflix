@@ -11,6 +11,7 @@
         />
       </div>
     </section>
+
     <!-- TV -->
     <section v-if="tv.length != 0" class="container-series">
       <h2>Series</h2>
@@ -41,12 +42,13 @@ export default {
 // IMPORT
 @import "@/styles/vars.scss";
 @import "@/styles/mixins.scss";
+
 // STYLE
 main {
-  section{
-    h2{
+  section {
+    h2 {
       margin: 20px 0;
-      text-align:center;
+      text-align: center;
       text-transform: uppercase;
       color: $primary-color;
     }
@@ -55,7 +57,7 @@ main {
       margin: 50px 0;
       @include flex(vertical);
       overflow-x: auto;
-      @media screen and (max-width: 800px){
+      @media screen and (max-width: 800px) {
         height: 500px;
         overflow-y: auto;
         flex-wrap: wrap;
@@ -64,5 +66,4 @@ main {
     }
   }
 }
-
 </style>

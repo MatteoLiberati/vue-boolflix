@@ -3,9 +3,11 @@
     <div class="cover">
       <img :src="poster(item.poster_path)" :alt="item.title + item.name" />
     </div>
+
     <!-- CONTENT CARD -->
     <div v-show="showContent" class="content-card">
       <h2 class="mb-10 text-center">{{ item.title }}{{ item.name }}</h2>
+
       <!-- ORIGINAL TITLE -->
       <div class="original-title mb-20">
         <span class="mr-8 primary">Titolo originale:</span>

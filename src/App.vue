@@ -34,15 +34,19 @@ export default {
       movieList: [],
       tvList: [],
       start: true,
+      apiUrl: "https://api.themoviedb.org/3/search/",
+      apiKey: "08725e8c8f7229c5f54f717ccd2e6afb",
     };
   },
   computed: {
-    getListMovie() {
+    getList() {
+      const apiParams = {
+        api_key: this.apiKey,
+        query: this.search,
+      };
       // MOVIELIST
       axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=08725e8c8f7229c5f54f717ccd2e6afb&query=${this.search}&language=it-IT `
-        )
+        .get(this.apiUrl + "movie", { params: apiParams })
         .then((res) => {
           this.movieList = res.data.results;
           this.start = false;
@@ -50,13 +54,9 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-    },
-    getListtv() {
       // TVLIST
       axios
-        .get(
-          `https://api.themoviedb.org/3/search/tv?api_key=08725e8c8f7229c5f54f717ccd2e6afb&query=${this.search}&language=it-IT `
-        )
+        .get(this.apiUrl + "tv", { params: apiParams })
         .then((res) => {
           this.tvList = res.data.results;
           this.start = false;
@@ -69,8 +69,7 @@ export default {
   methods: {
     userInput(userSearch) {
       this.search = userSearch;
-      this.getListMovie;
-      this.getListtv;
+      this.getList;
     },
     home() {
       this.start = true;

@@ -10,7 +10,7 @@
     <!-- START BEFORE SEARCH -->
     <Start @search="userInput" v-if="start" />
     <!-- MAIN -->
-    <Main v-else :movie="movieList" :tv="tvList" />
+    <Main @search="userInput" v-else :movie="movieList" :tv="tvList" />
   </div>
 </template>
 

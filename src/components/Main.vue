@@ -25,7 +25,7 @@
     </section>
 
     <!-- ELSE -->
-    <NoResult v-else />
+    <NoResult @search="input" v-else />
   </main>
 </template>
 
@@ -40,6 +40,11 @@ export default {
     NoResult,
   },
   props: ["movie", "tv"],
+  methods: {
+    input(item) {
+      this.$emit("search", item);
+    },
+  },
 };
 </script>
 

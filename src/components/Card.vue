@@ -2,6 +2,11 @@
   <div @mouseenter="content" @mouseleave="content" class="card">
     <div class="cover">
       <img :src="poster(item.poster_path)" :alt="item.title + item.name" />
+      <!-- TITLE IF NO COVER -->
+      <div class="text-nocover text-center" v-show="item.poster_path == null">
+        <!-- {{ item.title }}{{ item.name }} -->
+        <h2>{{ item.title }}{{ item.name }}</h2>
+      </div>
     </div>
 
     <!-- CONTENT CARD -->
@@ -68,7 +73,7 @@ export default {
       if (link != null) {
         return `https://image.tmdb.org/t/p/w342/${link}`;
       } else {
-        return `https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg`;
+        return `https://www.tropposmart.it/themes/AngarTheme/assets/img/en-default-large_default.jpg`;
       }
     },
     content() {
@@ -86,6 +91,7 @@ export default {
 .card {
   position: relative;
   .cover {
+    position: relative;
     img {
       height: 513px;
       width: 342px;
@@ -101,6 +107,15 @@ export default {
         width: 100px;
       }
     }
+    .text-nocover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      height: 100%;
+      width: 100%;
+      color: $secondary-color;
+    }
   }
   .content-card {
     position: absolute;
@@ -110,7 +125,7 @@ export default {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba($secondary-color, 0.5);
+    background-color: rgba($secondary-color, 0.6);
     @include flex(column);
     cursor: pointer;
     // LANGUAGE

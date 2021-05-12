@@ -2,13 +2,15 @@
   <div id="app">
     <!-- HEADER -->
     <Header @search="userInput">
-      <!-- SLOT -->
+      <!-- SLOT CON LOGO -->
       <a href="#"
         ><img @click="home" src="@/assets/img/logoBoolflix.png" alt="logo"
       /></a>
     </Header>
+
     <!-- START BEFORE SEARCH -->
     <Start @search="userInput" v-if="start" />
+
     <!-- MAIN -->
     <Main @search="userInput" v-else :movie="movieList" :tv="tvList" />
   </div>
@@ -30,7 +32,7 @@ export default {
   },
   data() {
     return {
-      search: "",
+      lastSearch: "",
       movieList: [],
       tvList: [],
       start: true,
@@ -38,39 +40,47 @@ export default {
       apiKey: "08725e8c8f7229c5f54f717ccd2e6afb",
     };
   },
-  computed: {
-    getList() {
-      const apiParams = {
-        api_key: this.apiKey,
-        query: this.search,
-      };
-      // MOVIELIST
-      axios
-        .get(this.apiUrl + "movie", { params: apiParams })
-        .then((res) => {
-          this.movieList = res.data.results;
-          this.start = false;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      // TVLIST
-      axios
-        .get(this.apiUrl + "tv", { params: apiParams })
-        .then((res) => {
-          this.tvList = res.data.results;
-          this.start = false;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-  },
   methods: {
+    /**
+     * se la parola ricercata non è uguale a quella precedente
+     * ed è diversa da una stringa vuota
+     * esegue una chiamata ajax usando come query la parola scritta
+     * e associa gli array movieList e tvList a quelli presenti nella api
+     */
     userInput(userSearch) {
-      this.search = userSearch;
-      this.getList;
+      if (this.lastSearch !== userSearch && userSearch != "") {
+        this.lastSearch = userSearch;
+        const apiParams = {
+          api_key: this.apiKey,
+          query: userSearch,
+        };
+        // MOVIELIST
+        axios
+          .get(this.apiUrl + "movie", { params: apiParams })
+          .then((res) => {
+            this.movieList = res.data.results;
+            this.start = false;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        // TVLIST
+        axios
+          .get(this.apiUrl + "tv", { params: apiParams })
+          .then((res) => {
+            this.tvList = res.data.results;
+            this.start = false;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     },
+    /**
+     * al click del logo presente in header
+     * riapre la facciata di start iniziale
+     * coprendo tutto il resto del main
+     */
     home() {
       this.start = true;
     },
@@ -79,5 +89,6 @@ export default {
 </script>
 
 <style lang="scss">
+// STYLE GENERALE
 @import "@/styles/general.scss";
 </style>

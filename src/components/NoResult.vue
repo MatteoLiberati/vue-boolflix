@@ -1,5 +1,7 @@
 <template>
+  <!-- COMPONENTE IN ELSE QUANDO LA RICERCA NON PRODUCE RISULTATI -->
   <div class="no-result">
+    <!-- LAYOVER OPACO CON TRASPARENZA -->
     <div class="layover">
       <h2 class="mb-10">Non è stato trovato alcun risultato</h2>
       <span class="mb-20">Riprova</span>
@@ -16,6 +18,9 @@ export default {
     Input,
   },
   methods: {
+    /**
+     * RI-EMIT DELL'INPUT
+     */
     input(item) {
       this.$emit("search", item);
     },
@@ -31,6 +36,7 @@ export default {
   width: 100%;
   flex-grow: 1;
   background-image: url("../assets/img/start-cover.jpg");
+
   .layover {
     width: 100%;
     height: 100%;

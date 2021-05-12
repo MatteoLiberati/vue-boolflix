@@ -1,4 +1,5 @@
 <template>
+  <!-- COMPONENTE DI INPUT UTILIZZATO IN HEADER, START E NORESULT -->
   <div class="input">
     <input
       class="mr-8"
@@ -19,6 +20,9 @@ export default {
     };
   },
   methods: {
+    /**
+     * PRIMO EMIT DELL'INPUT
+     */
     search() {
       this.$emit("search", this.userSearch);
       this.userSearch = "";
@@ -28,7 +32,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// IMPORT
 @import "@/styles/vars";
+// STYLE
 input {
   width: 180px;
   height: 30px;
@@ -44,6 +50,7 @@ input {
     box-shadow: 0px 0px 2px 2px $primary-color;
   }
 }
+
 button {
   padding: 8px 16px;
   border-radius: 8px;

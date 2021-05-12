@@ -1,15 +1,17 @@
 <template>
+  <!-- CARD UTILIZZATA SIA PER LA LISTA FILM CHE PER LA LISTA SERIE TV -->
   <div @mouseenter="content" @mouseleave="content" class="card">
     <div class="cover">
       <img :src="poster(item.poster_path)" :alt="item.title + item.name" />
-      <!-- TITLE IF NO COVER -->
+      <!-- TITOLO VISIBILE SOLO SE L'IMMAGINE DI COVER NON E' DISPONIBILE,
+      VERRA' GENERATA L'IMMAGINE SOSTITUTIVA E IL TITOLO SERVIRA' PER DISTINGUERE IL
+      CONTENUTO ALTRIMENTI VISIBILE SOLO ALL'HOVER -->
       <div class="text-nocover text-center" v-show="item.poster_path == null">
-        <!-- {{ item.title }}{{ item.name }} -->
         <h2>{{ item.title }}{{ item.name }}</h2>
       </div>
     </div>
 
-    <!-- CONTENT CARD -->
+    <!-- CONTENT CARD VISIBILE SOLO ALL'HOVER SULLA COVER-->
     <div v-show="showContent" class="content-card">
       <h2 class="mb-10 text-center">{{ item.title }}{{ item.name }}</h2>
 
@@ -22,6 +24,8 @@
       <!-- LANGUAGE -->
       <div class="language mb-10">
         <span class="mr-8 primary">lingua originale:</span>
+        <!-- STAMPA LE BANDIERE CON LE SIGLE DELLE LINGUE NEL CASO L'ARRAY FLAGS
+        CONTENGA LE SIGLE RESTITUITE DALL'ORIGINAL LANGUAGE -->
         <img
           v-if="this.flags.includes(item.original_language)"
           :src="require(`@/assets/img/${item.original_language}.png`)"
@@ -46,6 +50,8 @@
           :key="'key' + index + element"
         ></i>
       </div>
+
+      <!-- TRAMA -->
       <div class="plot">
         <span class="mb-10 primary">trama:</span>
         <span>{{ item.overview }}</span>
@@ -65,10 +71,21 @@ export default {
     };
   },
   methods: {
+    /**
+     * MODIFICA IL VALORE DI VALUTAZIONE DA 1 A 10
+     * IN SCALA DA 1 A 5
+     * E RITORNA IL VALORE ARROTONDANDOLO AL VALORE INTERO
+     * PIU' ALTO
+     */
     ceil(number) {
       number = number / 2;
       return Math.ceil(number);
     },
+    /**
+     * IN IF STAMPA L'IMMAGINE POSTER
+     * IN ELSE NEL CASO DI RISULTATO SENZA IMMAGINE POSTER
+     * STAMPA AL SUO POSTO UN IMMAGINE "NO IMAGE AVAILABLE"
+     */
     poster(link) {
       if (link != null) {
         return `https://image.tmdb.org/t/p/w342/${link}`;
@@ -76,6 +93,9 @@ export default {
         return `https://www.tropposmart.it/themes/AngarTheme/assets/img/en-default-large_default.jpg`;
       }
     },
+    /**
+     * IN MOUSEENTER E MOUSELEAVE RENDE VISIBILE O MENO IL CONTENUTO ABSOLUTE
+     */
     content() {
       this.showContent = !this.showContent;
     },

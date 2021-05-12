@@ -33,6 +33,7 @@
 // IMPORT
 import Card from "@/components/Card";
 import NoResult from "@/components/NoResult";
+
 export default {
   name: "Main",
   components: {
@@ -41,6 +42,9 @@ export default {
   },
   props: ["movie", "tv"],
   methods: {
+    /**
+     * RI-EMIT DELL'INPUT
+     */
     input(item) {
       this.$emit("search", item);
     },
@@ -58,6 +62,7 @@ main {
   height: 100vh;
   width: 100%;
   @include flex(column);
+
   section {
     h2 {
       margin: 20px 0;
@@ -65,6 +70,7 @@ main {
       text-transform: uppercase;
       color: $primary-color;
     }
+
     .movies,
     .tv-series {
       margin: 50px 0;

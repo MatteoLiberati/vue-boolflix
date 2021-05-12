@@ -1,5 +1,6 @@
 <template>
   <header class="container my-20">
+    <!-- SLOT CONENTE LOGO MODIFICABILE IN APPVUE -->
     <slot></slot>
     <Input @search="input" />
   </header>
@@ -16,6 +17,9 @@ export default {
     return {};
   },
   methods: {
+    /**
+     * RI-EMIT DELL'INPUT
+     */
     input(item) {
       this.$emit("search", item);
     },

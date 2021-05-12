@@ -23,16 +23,21 @@
         />
       </div>
     </section>
+
+    <!-- ELSE -->
+    <NoResult v-else />
   </main>
 </template>
 
 <script>
 // IMPORT
 import Card from "@/components/Card";
+import NoResult from "@/components/NoResult";
 export default {
   name: "Main",
   components: {
     Card,
+    NoResult,
   },
   props: ["movie", "tv"],
 };
@@ -45,6 +50,9 @@ export default {
 
 // STYLE
 main {
+  height: 100vh;
+  width: 100%;
+  @include flex(column);
   section {
     h2 {
       margin: 20px 0;

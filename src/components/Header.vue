@@ -13,14 +13,11 @@ export default {
     Input,
   },
   data() {
-    return {
-      userSearch: "",
-    };
+    return {};
   },
   methods: {
     input(item) {
       this.$emit("search", item);
-      this.userSearch = "";
     },
   },
 };

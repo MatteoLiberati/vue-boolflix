@@ -21,7 +21,6 @@ export default {
   methods: {
     input(item) {
       this.$emit("search", item);
-      this.userSearch = "";
     },
   },
 };

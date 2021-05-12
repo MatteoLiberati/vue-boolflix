@@ -8,7 +8,7 @@
       /></a>
     </Header>
     <!-- START BEFORE SEARCH -->
-    <Start v-if="start" />
+    <Start @search="userInput" v-if="start" />
     <!-- MAIN -->
     <Main v-else :movie="movieList" :tv="tvList" />
   </div>

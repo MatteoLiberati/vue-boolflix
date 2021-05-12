@@ -4,15 +4,26 @@
       <div class="content-start">
         <h1 class="mb-20">Benvenuto su Boolflix</h1>
         <span class="mb-10">Inizia subito l'esperienza</span>
-        <span>Cerca il film o la tua serie preferita</span>
+        <span class="mb-10">Cerca il film o la tua serie preferita</span>
+        <Input @search="input" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Input from "@/components/Input";
 export default {
   name: "Start",
+  components: {
+    Input,
+  },
+  methods: {
+    input(item) {
+      this.$emit("search", item);
+      this.userSearch = "";
+    },
+  },
 };
 </script>
 

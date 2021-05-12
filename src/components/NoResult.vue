@@ -11,17 +11,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@include flex(center);
+// @import "@/styles/mixins";
 
 .no-result {
   width: 100%;
   flex-grow: 1;
   background-image: url("../assets/img/start-cover.jpg");
-  .layover {
-    width: 100%;
-    height: 100%;
-    @include flex(center);
-    background-color: rgba($secondary-color, 0.3);
-  }
+  //   .layover {
+  //     width: 100%;
+  //     height: 100%;
+  //     @include flex(center);
+  //     background-color: rgba($secondary-color, 0.3);
+  //   }
 }
 </style>

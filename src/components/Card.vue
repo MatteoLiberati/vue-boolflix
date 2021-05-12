@@ -11,21 +11,18 @@
         <span class="mr-8 primary">Titolo originale:</span>
         <span> {{ item.original_title }}{{ item.original_name }} </span>
       </div>
+
       <!-- LANGUAGE -->
       <div class="language mb-10">
         <span class="mr-8 primary">lingua originale:</span>
         <img
-          v-if="item.original_language == 'it'"
-          src="../assets/img/it.png"
-          alt="Italy"
-        />
-        <img
-          v-if="item.original_language == 'en'"
-          src="../assets/img/en.png"
-          alt="English"
+          v-if="this.flags.includes(item.original_language)"
+          :src="require(`@/assets/img/${item.original_language}.png`)"
+          :alt="item.original_language"
         />
         <span v-else>{{ item.original_language }}</span>
       </div>
+
       <!-- VOTE -->
       <div class="vote">
         <!-- FULL STARS -->
@@ -34,6 +31,7 @@
           v-for="(element, index) in ceil(item.vote_average)"
           :key="index + element"
         ></i>
+
         <!-- EMPTY STARS -->
         <i
           class="far fa-star"
@@ -56,6 +54,7 @@ export default {
   data() {
     return {
       showContent: false,
+      flags: ["it", "en"],
     };
   },
   methods: {

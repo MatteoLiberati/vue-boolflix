@@ -1,7 +1,10 @@
 <template>
   <main class="container">
     <!-- MOVIES -->
-    <section v-if="movie.length !== 0" class="container-movies">
+    <section
+      v-if="movie.length !== 0 && openIspiration == false"
+      class="container-movies"
+    >
       <h2>Movies</h2>
       <div class="movies cards-shadow">
         <Card
@@ -13,7 +16,10 @@
     </section>
 
     <!-- TV -->
-    <section v-if="tv.length !== 0" class="container-series">
+    <section
+      v-if="tv.length !== 0 && openIspiration == false"
+      class="container-series"
+    >
       <h2>Series</h2>
       <div class="tv-series cards-shadow">
         <Card
@@ -26,6 +32,7 @@
 
     <!-- ELSE -->
     <NoResult @search="input" v-show="movie.length == 0 && tv.length == 0" />
+    <Inspiration v-show="openIspiration" :bestMovie="best" />
   </main>
 </template>
 
@@ -33,14 +40,16 @@
 // IMPORT
 import Card from "@/components/Card";
 import NoResult from "@/components/NoResult";
+import Inspiration from "@/components/Inspiration";
 
 export default {
   name: "Main",
   components: {
     Card,
     NoResult,
+    Inspiration,
   },
-  props: ["movie", "tv"],
+  props: ["movie", "tv", "openIspiration", "best"],
   methods: {
     /**
      * RI-EMIT DELL'INPUT
@@ -59,7 +68,8 @@ export default {
 
 // STYLE
 main {
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   width: 100%;
   @include flex(column);
 

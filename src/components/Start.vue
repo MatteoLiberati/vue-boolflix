@@ -65,7 +65,7 @@ export default {
     width: 100%;
     height: 100%;
     @include flex(center);
-    background-color: rgba($secondary-color, 0.3);
+    background-color: rgba($secondary-color, 0.35);
 
     .content-start {
       font-size: 1.2rem;

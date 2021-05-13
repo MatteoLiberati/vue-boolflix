@@ -42,7 +42,7 @@ export default {
     height: 100%;
     font-size: 1.2rem;
     @include flex("column-center");
-    background-color: rgba($secondary-color, 0.3);
+    background-color: rgba($secondary-color, 0.35);
   }
 }
 </style>

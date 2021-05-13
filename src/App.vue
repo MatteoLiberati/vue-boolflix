@@ -12,8 +12,14 @@
     <Start @search="userInput" :best="bestMovies" v-if="start" />
 
     <!-- MAIN -->
-    <Main @search="userInput" v-else :movie="movieList" :tv="tvList" />
-    <Inspiration v-show="sectionInspiration" />
+    <Main
+      v-else
+      @search="userInput"
+      :openIspiration="sectionInspiration"
+      :movie="movieList"
+      :tv="tvList"
+      :best="bestMovies"
+    />
   </div>
 </template>
 
@@ -22,7 +28,6 @@
 import Header from "@/components/Header";
 import Main from "@/components/Main";
 import Start from "@/components/Start";
-import Inspiration from "@/components/Inspiration";
 import axios from "axios";
 
 export default {
@@ -31,7 +36,6 @@ export default {
     Header,
     Main,
     Start,
-    Inspiration,
   },
   data() {
     return {
@@ -84,6 +88,7 @@ export default {
             console.log(err);
           });
       }
+      this.sectionInspiration = false;
     },
     /**
      * genera una lettera a caso per l'array bestMovies
@@ -102,6 +107,7 @@ export default {
     home() {
       this.start = true;
       this.bestMovieRandom();
+      this.sectionInspiration = false;
     },
     /**
      * Aggiorna l'array movie ricercando un carattere a caso
@@ -124,8 +130,15 @@ export default {
           console.log(err);
         });
     },
+    /**
+     * rende true la sectionInspiration, false lo start,
+     * richiama la function random dei bestMovies
+     * e azzerra gli array delle ricerche
+     */
     inspiration() {
       this.sectionInspiration = true;
+      this.start = false;
+      this.bestMovieRandom();
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <!-- CARD UTILIZZATA SIA PER LA LISTA FILM CHE PER LA LISTA SERIE TV -->
-  <div @mouseenter="content" @mouseleave="content" class="card">
+  <div v-if="item" @mouseenter="content" @mouseleave="content" class="card">
     <div class="cover">
       <img :src="poster(item.poster_path)" :alt="item.title + item.name" />
       <!-- TITOLO VISIBILE SOLO SE L'IMMAGINE DI COVER NON E' DISPONIBILE,

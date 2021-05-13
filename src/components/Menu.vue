@@ -6,12 +6,6 @@
     <a href="#">
       <li @click="$emit('inspiration')">Lasciati ispirare</li>
     </a>
-    <a href="#">
-      <li>login</li>
-    </a>
-    <a href="#">
-      <li>abbonamenti</li>
-    </a>
   </ul>
 </template>
 <script>

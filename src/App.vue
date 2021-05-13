@@ -66,6 +66,7 @@ export default {
         const apiParams = {
           api_key: this.apiKey,
           query: userSearch,
+          language: "it-IT",
         };
         // MOVIELIST
         axios
@@ -119,6 +120,7 @@ export default {
           params: {
             api_key: this.apiKey,
             query: this.randomChars(),
+            language: "it-IT",
           },
         })
         .then((res) => {

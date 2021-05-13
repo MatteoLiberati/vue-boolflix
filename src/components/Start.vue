@@ -78,6 +78,7 @@ export default {
       color: $primary-color;
     }
     .listBestMovie {
+      text-align: initial;
       @include flex(flex);
     }
   }

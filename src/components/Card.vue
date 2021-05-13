@@ -145,7 +145,7 @@ export default {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba($secondary-color, 0.6);
+    background-color: rgba($secondary-color, 0.7);
     @include flex(column);
     cursor: pointer;
     // LANGUAGE

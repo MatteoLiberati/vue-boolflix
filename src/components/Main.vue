@@ -6,7 +6,7 @@
       class="container-movies"
     >
       <h2>Movies</h2>
-      <div class="movies cards-shadow">
+      <div class="movies cards-shadow container">
         <Card
           :item="element"
           v-for="(element, index) in movie"
@@ -21,7 +21,7 @@
       class="container-series"
     >
       <h2>Series</h2>
-      <div class="tv-series cards-shadow">
+      <div class="tv-series cards-shadow container">
         <Card
           :item="element"
           v-for="(element, index) in tv"
@@ -31,7 +31,10 @@
     </section>
 
     <!-- ELSE -->
-    <NoResult @search="input" v-show="movie.length == 0 && tv.length == 0" />
+    <NoResult
+      @search="input"
+      v-show="movie.length == 0 && tv.length == 0 && openIspiration == false"
+    />
     <Inspiration v-show="openIspiration" :bestMovie="best" />
   </main>
 </template>
@@ -69,11 +72,11 @@ export default {
 // STYLE
 main {
   position: relative;
-  min-height: 100vh;
+  flex-grow: 1;
   width: 100%;
-  @include flex(column);
 
   section {
+    @include flex(column-center);
     h2 {
       margin: 20px 0;
       text-align: center;

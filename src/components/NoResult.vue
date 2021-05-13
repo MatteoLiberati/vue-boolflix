@@ -34,7 +34,7 @@ export default {
 
 .no-result {
   width: 100%;
-  flex-grow: 1;
+  height: 100%;
   background-image: url("../assets/img/start-cover.jpg");
 
   .layover {

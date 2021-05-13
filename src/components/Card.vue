@@ -40,14 +40,14 @@
         <i
           class="fas fa-star"
           v-for="(element, index) in ceil(item.vote_average)"
-          :key="index + element"
+          :key="'full' + index"
         ></i>
 
         <!-- EMPTY STARS -->
         <i
           class="far fa-star"
           v-for="(element, index) in 5 - ceil(item.vote_average)"
-          :key="'key' + index + element"
+          :key="'empty' + index"
         ></i>
       </div>
 

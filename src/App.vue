@@ -9,7 +9,7 @@
     </Header>
 
     <!-- START BEFORE SEARCH -->
-    <Start @search="userInput" v-if="start" />
+    <Start @search="userInput" :best="bestMovies" v-if="start" />
 
     <!-- MAIN -->
     <Main @search="userInput" v-else :movie="movieList" :tv="tvList" />
@@ -34,11 +34,16 @@ export default {
     return {
       lastSearch: "",
       movieList: [],
+      bestMovies: [],
       tvList: [],
+      chars: "abcdefghijklmnopqrstuvwxyz",
       start: true,
       apiUrl: "https://api.themoviedb.org/3/search/",
       apiKey: "08725e8c8f7229c5f54f717ccd2e6afb",
     };
+  },
+  mounted() {
+    this.bestMovieRandom();
   },
   methods: {
     /**
@@ -77,12 +82,44 @@ export default {
       }
     },
     /**
+     * genera una lettera a caso per l'array bestMovies
+     */
+    randomChars() {
+      let char = this.chars.charAt(
+        Math.floor(Math.random() * this.chars.length)
+      );
+      return char;
+    },
+    /**
      * al click del logo presente in header
      * riapre la facciata di start iniziale
      * coprendo tutto il resto del main
      */
     home() {
       this.start = true;
+      this.bestMovieRandom();
+    },
+    /**
+     * Aggiorna l'array movie ricercando un carattere a caso
+     */
+    bestMovieRandom() {
+      //BESTMOVIE RANDOM
+      axios
+        .get(this.apiUrl + "movie", {
+          params: {
+            api_key: this.apiKey,
+            query: this.randomChars(),
+          },
+        })
+        .then((res) => {
+          this.bestMovies = res.data.results.filter((element) => {
+            return element.vote_average > 7;
+          });
+          console.log(this.bestMovies);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

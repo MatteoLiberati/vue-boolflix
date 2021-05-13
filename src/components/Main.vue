@@ -3,7 +3,7 @@
     <!-- MOVIES -->
     <section v-if="movie.length != 0" class="container-movies">
       <h2>Movies</h2>
-      <div class="movies">
+      <div class="movies cards-shadow">
         <Card
           :item="element"
           v-for="(element, index) in movie"
@@ -15,7 +15,7 @@
     <!-- TV -->
     <section v-if="tv.length != 0" class="container-series">
       <h2>Series</h2>
-      <div class="tv-series">
+      <div class="tv-series cards-shadow">
         <Card
           :item="element"
           v-for="(element, index) in tv"

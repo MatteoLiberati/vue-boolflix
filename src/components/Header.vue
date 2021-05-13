@@ -2,16 +2,24 @@
   <header class="container my-20">
     <!-- SLOT CONENTE LOGO MODIFICABILE IN APPVUE -->
     <slot></slot>
-    <Input @search="input" />
+    <div class="right">
+      <Menu
+        @clickHome="$emit('clickHome')"
+        @inspiration="$emit('inspiration')"
+      />
+      <Input @search="input" />
+    </div>
   </header>
 </template>
 
 <script>
 import Input from "@/components/Input";
+import Menu from "@/components/Menu";
 export default {
   name: "Header",
   components: {
     Input,
+    Menu,
   },
   data() {
     return {};
@@ -35,8 +43,14 @@ export default {
 header {
   width: 100%;
   @include flex("space-bet-v");
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1000px) {
     @include flex(column);
+  }
+  .right {
+    @include flex(vertical);
+    @media screen and (max-width: 698px) {
+      @include flex(column);
+    }
   }
 }
 </style>

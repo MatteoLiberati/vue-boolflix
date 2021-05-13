@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- HEADER -->
-    <Header @search="userInput">
+    <Header @clickHome="home" @search="userInput" @inspiration="inspiration">
       <!-- SLOT CON LOGO -->
       <a href="#"
         ><img @click="home" src="@/assets/img/logoBoolflix.png" alt="logo"
@@ -13,6 +13,7 @@
 
     <!-- MAIN -->
     <Main @search="userInput" v-else :movie="movieList" :tv="tvList" />
+    <Inspiration v-show="sectionInspiration" />
   </div>
 </template>
 
@@ -21,6 +22,7 @@
 import Header from "@/components/Header";
 import Main from "@/components/Main";
 import Start from "@/components/Start";
+import Inspiration from "@/components/Inspiration";
 import axios from "axios";
 
 export default {
@@ -29,6 +31,7 @@ export default {
     Header,
     Main,
     Start,
+    Inspiration,
   },
   data() {
     return {
@@ -36,6 +39,7 @@ export default {
       movieList: [],
       bestMovies: [],
       tvList: [],
+      sectionInspiration: false,
       chars: "abcdefghijklmnopqrstuvwxyz",
       start: true,
       apiUrl: "https://api.themoviedb.org/3/search/",
@@ -115,11 +119,13 @@ export default {
           this.bestMovies = res.data.results.filter((element) => {
             return element.vote_average > 7;
           });
-          console.log(this.bestMovies);
         })
         .catch((err) => {
           console.log(err);
         });
+    },
+    inspiration() {
+      this.sectionInspiration = true;
     },
   },
 };

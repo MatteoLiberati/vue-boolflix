@@ -1,7 +1,7 @@
 <template>
   <main class="container">
     <!-- MOVIES -->
-    <section v-if="movie.length != 0" class="container-movies">
+    <section v-if="movie.length !== 0" class="container-movies">
       <h2>Movies</h2>
       <div class="movies cards-shadow">
         <Card
@@ -13,7 +13,7 @@
     </section>
 
     <!-- TV -->
-    <section v-if="tv.length != 0" class="container-series">
+    <section v-if="tv.length !== 0" class="container-series">
       <h2>Series</h2>
       <div class="tv-series cards-shadow">
         <Card
@@ -25,7 +25,7 @@
     </section>
 
     <!-- ELSE -->
-    <NoResult @search="input" v-else />
+    <NoResult @search="input" v-show="movie.length == 0 && tv.length == 0" />
   </main>
 </template>
 
@@ -73,8 +73,7 @@ main {
 
     .movies,
     .tv-series {
-      margin: 50px 0;
-      @include flex(vertical);
+      @include flex(flex);
       overflow-x: auto;
       @media screen and (max-width: 800px) {
         height: 500px;

@@ -10,7 +10,11 @@
         <Input class="mb-20" @search="input" />
         <h2 class="mb-20">I nostri utenti consigliano:</h2>
         <div class="listBestMovie cards-shadow">
-          <Card :item="film" v-for="(film, index) in recommended(best)" :key="+index" />
+          <Card
+            v-for="(item, index) in recommended(best)"
+            :key="index + 'key'"
+            :item="item"
+          />
         </div>
       </div>
     </div>
@@ -34,13 +38,13 @@ export default {
     input(item) {
       this.$emit("search", item);
     },
-    recommended(best){
+    recommended(best) {
       let newArray = [];
-      for(let i=0; i<3; i++){
-        newArray.push(best[i]); 
+      for (let i = 0; i < 3; i++) {
+        newArray.push(best[i]);
       }
       return newArray;
-    }
+    },
   },
 };
 </script>
@@ -69,7 +73,7 @@ export default {
       text-align: center;
       border-radius: 8px;
     }
-    h2{
+    h2 {
       text-shadow: 0px 0px 2px $text-color;
       color: $primary-color;
     }

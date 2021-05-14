@@ -109,6 +109,7 @@ export default {
       this.start = true;
       this.bestMovieRandom();
       this.sectionInspiration = false;
+      this.lastSearch = "";
     },
     /**
      * Aggiorna l'array movie ricercando un carattere a caso

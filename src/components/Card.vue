@@ -136,7 +136,7 @@ export default {
       width: 100%;
       color: $secondary-color;
       @media screen and (max-width: 1270px) {
-        font-size: 0.5rem;
+        font-size: 0.7rem;
       }
     }
   }
@@ -151,17 +151,49 @@ export default {
     background-color: rgba($secondary-color, 0.7);
     @include flex(column);
     cursor: pointer;
+    @media screen and (max-width: 1270px) {
+      font-size: 0.7rem;
+      text-align: left;
+      padding: 5px;
+    }
+    // ORIGINAL TITLE
+    .original-title {
+      @media screen and (max-width: 1270px) {
+        @include flex(column);
+      }
+      & > span:first-child {
+        @media screen and (max-width: 1270px) {
+          margin-bottom: 8px;
+        }
+      }
+    }
     // LANGUAGE
     .language {
       @include flex(vertical);
+      @media screen and (max-width: 1270px) {
+        @include flex(column);
+      }
+      & > span {
+        @media screen and (max-width: 1270px) {
+          margin-right: 0;
+        }
+      }
       & > img {
         height: 1rem;
+        @media screen and (max-width: 1270px) {
+          margin-top: 8px;
+        }
       }
       // VOTE
     }
+    // VOTE
     .vote {
       text-align: right;
       color: yellow;
+      @media screen and (max-width: 1270px) {
+        margin-bottom: 5px;
+        text-align: initial;
+      }
     }
     // PLOT
     .plot {

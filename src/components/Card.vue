@@ -136,7 +136,8 @@ export default {
       width: 100%;
       color: $secondary-color;
       @media screen and (max-width: 1270px) {
-        font-size: 0.7rem;
+        font-size: 0.5rem;
+        background-color: white;
       }
     }
   }
@@ -144,6 +145,7 @@ export default {
     position: absolute;
     padding: 20px;
     overflow-y: auto;
+    overflow-x: hidden;
     top: 0;
     left: 0;
     height: 100%;
@@ -152,7 +154,7 @@ export default {
     @include flex(column);
     cursor: pointer;
     @media screen and (max-width: 1270px) {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       text-align: left;
       padding: 5px;
     }

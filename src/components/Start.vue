@@ -79,7 +79,7 @@ export default {
     }
     .listBestMovie {
       text-align: initial;
-      @include flex(flex);
+      @include flex(horizontal);
     }
   }
 }

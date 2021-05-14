@@ -135,6 +135,9 @@ export default {
       height: 100%;
       width: 100%;
       color: $secondary-color;
+      @media screen and (max-width: 1270px) {
+        font-size: 0.5rem;
+      }
     }
   }
   .content-card {

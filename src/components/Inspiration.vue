@@ -7,7 +7,7 @@
       <Card
         :item="element"
         v-for="(element, index) in bestMovie"
-        :key="element.name + index"
+        :key="'key-ispiration' + index"
       />
     </div>
   </section>

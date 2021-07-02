@@ -2,7 +2,7 @@
   <div id="app">
     <!-- HEADER -->
     <Header @clickHome="home" @search="userInput" @inspiration="inspiration">
-      <!-- SLOT CON LOGO -->
+      <!-- SLOT LOGO -->
       <a href="#"
         ><img @click="home" src="@/assets/img/logoBoolflix.png" alt="logo"
       /></a>
